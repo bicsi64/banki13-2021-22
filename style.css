@@ -1,0 +1,26 @@
+table{
+	border:2px solid black;
+	background:lightgray;
+	padding:1em;
+}
+td,th{
+	border:2px solid black;
+	padding:1em;
+	text-align:center;
+	background:lightyellow;
+	font-size:1.5em;
+	font-family:  Arial, Helvetica, sans-serif;
+	width:10em;
+	height:3em;
+}
+#me{
+	color:blue;
+}
+
+.empty{
+	background:tomato;
+}
+
+.missing{
+	background:lightblue;
+}
