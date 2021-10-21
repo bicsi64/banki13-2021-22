@@ -46,6 +46,28 @@ class Ulesrend {
     public function get_sor() {
         return $this->sor;
     }
+
+    public function get_oszlop() {
+        return $this->oszlop;
+    }
+
+    public function get_id() {
+        return $this->id;
+    }
+
+    // tanulók id listáját adja vissza
+    public function tanulokListaja($conn) {
+        $lista = array();
+        $sql = "SELECT id FROM ulesrend";
+        if($result = $conn->query($sql)) {
+            if ($result->num_rows > 0) {
+				while($row = $result->fetch_assoc()) {
+                    
+                }
+            }
+        }
+        return $lista;
+    }
 }
 
 // $tanulo = new Ulesrend;
