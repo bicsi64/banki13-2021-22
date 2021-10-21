@@ -1,7 +1,5 @@
 <?php
 
-require "../db.inc.php";
-
 class Ulesrend {
     
     private $id;
@@ -36,12 +34,20 @@ class Ulesrend {
     public function get_nev() {
         return $this->nev;
     }
+
+    public function get_jelszo() {
+        return $this->jelszo;
+    }
+
+    public function get_felhasznalonev() {
+        return $this->felhasznalonev;
+    }
 }
 
-$tanulo = new Ulesrend;
+// $tanulo = new Ulesrend;
 
-$tanulo->set_user(4, $conn);
+// $tanulo->set_user(4, $conn);
 
-echo $tanulo->get_nev();
+// echo $tanulo->get_nev();
 
 ?>
