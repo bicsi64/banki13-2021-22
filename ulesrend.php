@@ -3,7 +3,8 @@
 session_start();
 
 require 'db.inc.php';
-
+require 'model/Ulesrend.php';
+$tanulo = new Ulesrend;
 require 'functions.inc.php';
 
 // form feldolgozása
@@ -89,19 +90,19 @@ include 'htmlheader.inc.php';
 				// output data of each row
 				$sor = 0;
 				while($row = $result->fetch_assoc()) {
-					
-					if($row["sor"] != $sor) {
+					$tanulo->set_user($row['id'], $conn);
+					if($tanulo->get_sor() != $sor) {
 						if($sor != 0) echo '</tr>';
 						echo '<tr>';
-						$sor = $row["sor"];
+						$sor = $tanulo->get_sor();
 					}
-					if(!$row["nev"]) echo '<td class="empty"></td>';
+					if(!$tanulo->get_nev()) echo '<td class="empty"></td>';
 					else {
 						$plusz = '';
 						if(in_array($row["id"], $hianyzok)) $plusz .=  ' class="missing"';
 						if($row["id"] == $en) $plusz .=  ' id="me"';
 						if($row["id"] == $tanar) $plusz .=  ' colspan="2"';
-						echo "<td".$plusz.">" . $row["nev"];
+						echo "<td".$plusz.">" . $tanulo->get_nev();
 						if(!empty($_SESSION["id"])) {
 							if(in_array($_SESSION["id"], $adminok)) {
 								if(in_array($row["id"], $hianyzok)) echo '<br><a href="ulesrend.php?nem_hianyzo='.$row["id"].'">Nem hiányzó</a>';

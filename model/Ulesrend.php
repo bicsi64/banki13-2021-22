@@ -42,6 +42,10 @@ class Ulesrend {
     public function get_felhasznalonev() {
         return $this->felhasznalonev;
     }
+
+    public function get_sor() {
+        return $this->sor;
+    }
 }
 
 // $tanulo = new Ulesrend;
