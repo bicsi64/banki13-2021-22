@@ -7,23 +7,31 @@ require 'model/Ulesrend.php';
 $tanulo = new Ulesrend;
 require 'includes/functions.inc.php';
 
-$szoveg = "Belépés";
-$link = "belepes";
+$page = 'index';
+
+if(!empty($_REQUEST['action'])) {
+	if($_REQUEST['action'] == 'kilepes') session_unset();
+}
 
 if(!empty($_SESSION["id"])) {
-    $szoveg = $_SESSION["nev"].": Kilépés";
-    $link = "index.php?logout=1";
+        $szoveg = $_SESSION["nev"].": Kilépés";
+        $action = "kilepes";
+}
+else {
+        $szoveg = "Belépés";
+        $action = "belepes";        
 } 
-
-$menupontok = array('index' => "Főoldal", 'ulesrend' => "Ülésrend", $link => $szoveg);
-
-$page = 'index';
 
 if(isset($_REQUEST['page'])) {
         if(file_exists('controller/'.$_REQUEST['page'].'.php')) {
                 $page = $_REQUEST['page']; 
         }
 }
+
+$menupontok = array(    'index' => "Főoldal", 
+                        'ulesrend' => "Ülésrend", 
+                        'felhasznalo' => $szoveg
+                );
 
 $title = $menupontok[$page];
 
@@ -41,3 +49,4 @@ include 'controller/'.$page.'.php';
 
 ?>
 </body>
+</html>
