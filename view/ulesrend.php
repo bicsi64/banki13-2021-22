@@ -1,8 +1,4 @@
-<?php
 
-include 'htmlheader.inc.php';
-
-?>
 	<body>
 		<?php
 

@@ -1,11 +1,6 @@
 <?php
 
-session_start();
 
-require 'db.inc.php';
-require 'model/Ulesrend.php';
-$tanulo = new Ulesrend;
-require 'functions.inc.php';
 
 // form feldolgozása
 
