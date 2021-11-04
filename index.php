@@ -7,13 +7,15 @@ require 'model/Ulesrend.php';
 $tanulo = new Ulesrend;
 require 'functions.inc.php';
 
-include 'htmlheader.inc.php';
-?>
+$szoveg = "Belépés";
+$link = "belepes";
 
-<body>
-<?php
+if(!empty($_SESSION["id"])) {
+    $szoveg = $_SESSION["nev"].": Kilépés";
+    $link = "index.php?logout=1";
+} 
 
-include 'menu.inc.php';
+$menupontok = array('index' => "Főoldal", 'ulesrend' => "Ülésrend", $link => $szoveg);
 
 $page = 'index';
 
@@ -22,6 +24,18 @@ if(isset($_REQUEST['page'])) {
                 $page = $_REQUEST['page']; 
         }
 }
+
+$title = $menupontok[$page];
+
+include 'htmlheader.inc.php';
+?>
+
+<body>
+<?php
+
+include 'menu.inc.php';
+
+
 
 include 'controller/'.$page.'.php';
 
