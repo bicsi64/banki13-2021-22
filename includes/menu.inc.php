@@ -12,6 +12,8 @@
         foreach($menupontok as $key => $value) {
             $active = '';
             if($_SERVER['REQUEST_URI'] == '/teszt/'.$key) $active = ' active';
+
+            if($key == 'felhasznalo') $key.='&action='.$action;
             ?>
             <li class="nav-item<?php echo $active; ?>">
                 <a class="nav-link" href="index.php?page=<?php echo $key; ?>"><?php echo $value; ?></a>
