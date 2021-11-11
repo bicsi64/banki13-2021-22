@@ -7,6 +7,12 @@ class Hianyzo extends Kijeloltfelhasznalok {
     function __construct() {
         $this->tablaNev = 'hianyzok';
     }
+
+    // remove_id metódus elkészítése
+    public function remove_id($id, $conn) {
+        $sql = "DELETE FROM hianyzok WHERE id = $id";
+        $result = $conn->query($sql);	
+    }
 }
 
 ?>
