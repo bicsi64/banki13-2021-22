@@ -5,7 +5,6 @@ session_start();
 require 'includes/db.inc.php';
 require 'model/Ulesrend.php';
 $tanulo = new Ulesrend;
-require 'includes/functions.inc.php';
 
 // default oldal
 $page = 'index';
