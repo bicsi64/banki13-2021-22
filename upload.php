@@ -3,9 +3,6 @@
   $errors = array();
 
 if(isset($_FILES["fileToUpload"])) {
-  echo '<pre>';
-  print_r($_FILES["fileToUpload"]);
-  echo '</pre>';
   $target_dir = "uploads/";
   $allowed_filetypes = array('image/png', 'image/jpg','image/jpeg');
 
@@ -24,9 +21,12 @@ if(isset($_FILES["fileToUpload"])) {
     }
 
     if(!isset($errors[$key])) {
-      if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"][$key], $target_file)) {
+      if (@move_uploaded_file($_FILES["fileToUpload"]["tmp_name"][$key], $target_file)) {
         $i++;
-      }      
+      }
+      else {
+        $errors[$key][] = "Hiba történt a $name file mentésekor."; // felhasználónak    
+      } 
     }
   }
 }
