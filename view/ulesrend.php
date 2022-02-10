@@ -67,5 +67,17 @@
 
 				?>
 		</table>
+		<?php
+
+		if(!empty($_SESSION["id"])) {
+			?>
+			<form action="index.php?page=ulesrend" method="post" enctype="multipart/form-data">
+			Profilkép feltöltése:
+			<input type="file" name="fileToUpload" id="fileToUpload">
+			<input type="submit" value="Upload Image" name="submit">
+			</form>
+		<?php
+		}
+		?>
 	</body>
 </html>
